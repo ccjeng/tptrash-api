@@ -1,0 +1,22 @@
+{
+  "name": "tptrash",
+  "version": "0.1.0",
+  "description": "Taipei garbage truck location API",
+  "main": "tptrash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "4.1.0",
+    "mongoose": "3.8.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:tptrash-api.git"
+  },
+  "author": "Andy Cheng",
+  "license": "ISC",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
