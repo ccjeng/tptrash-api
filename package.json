@@ -10,15 +10,8 @@
     "express": "4.1.0",
     "mongoose": "3.8.8"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:ccjeng/tptrash-api.git"
-  },
   "author": "Andy Cheng",
   "license": "ISC",
-  "engines": {
-    "node": "0.10.x"
-  }, 
   "scripts": {
         "start" : "node server.js"
     }
