@@ -1,5 +1,4 @@
 
-//test url
 //http://andycheng.kd.io:3412/21/3/121.5372111/25.067934
 
 var mongoose = require ("mongoose");
