@@ -58,7 +58,13 @@ app.get('/:hour/:num/:lng/:lat', function (req, res) {
 });
 
 // Launch server
-//app.listen(process.env.PORT || 3412);
-app.listen(OPENSHIFT_NODEJS_PORT || 8080);
+//var port = process.env.PORT || 8080  
+//, ip = process.env.IP || "127.0.0.1";
+
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080  
+, ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+
+app.listen(port, ip);
+//app.listen(OPENSHIFT_NODEJS_PORT || 8080);
 
 
