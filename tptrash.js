@@ -31,6 +31,11 @@ trashSchema.index({
 
 var Trash = mongoose.model('Trash', trashSchema, 'Trash');
 
+var allowCrossDomain = function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,      Accept");
+  next();
+};
 app.use(allowCrossDomain);
 app.get('/:hour/:num/:lng/:lat', function (req, res) {
     res.type('application/json');
