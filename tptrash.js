@@ -31,6 +31,7 @@ trashSchema.index({
 
 var Trash = mongoose.model('Trash', trashSchema, 'Trash');
 
+app.use(allowCrossDomain);
 app.get('/:hour/:num/:lng/:lat', function (req, res) {
     res.type('application/json');
     
