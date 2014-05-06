@@ -1,26 +1,13 @@
 
-    ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+## 台北市垃圾車追蹤
+資料來源: 臺北市垃圾清運點位資訊 http://data.taipei.gov.tw/opendata/apply/NewDataContent?oid=021C72FF-591F-4267-AA36-4D0E3A43AAFD
+
+## 資料介接
 
 
-Welcome to Cloud9 IDE!
+Visit http://tptrashapi-ccjeng.rhcloud.com/@hour/@row/121.530829/25.0973629
 
-To get you started, we have created a demo chat application.
-
-1) Open the server.js file
-
-2) Click the 'Run' button at the top to start your server,
-
-3) Click the URL that is emitted to the Output tab of the console
-
-Happy coding!
-The Cloud9 IDE team
-
-## Support & Documentation
-
-Visit http://docs.c9.io for documentation, or http://support.c9.io for support.
-To watch some training videos, visit http://www.youtube.com/user/c9ide.
+@hour : 查詢時間
+@row: 資料筆數
+@Longitude 精度
+@
