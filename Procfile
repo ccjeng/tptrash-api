@@ -1,1 +1,1 @@
-web: node tptrash.js
+web: node server.js

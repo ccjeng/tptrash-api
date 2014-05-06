@@ -1,5 +1,5 @@
 
-//http://andycheng.kd.io:3412/21/3/121.5372111/25.067934
+// test URL --/21/3/121.5372111/25.067934
 
 var mongoose = require ("mongoose");
 var express = require('express');
@@ -33,7 +33,7 @@ var Trash = mongoose.model('Trash', trashSchema, 'Trash');
 
 var allowCrossDomain = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,      Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 };
 app.use(allowCrossDomain);
@@ -44,19 +44,18 @@ app.get('/:hour/:num/:lng/:lat', function (req, res) {
     var lat = req.params.lat;
     var hour= req.params.hour+":";
     var num = req.params.num;
+    var distance = 5 / 111.2; // 5 km
     
     var re = new RegExp(hour, "i");
 
-    var query = Trash.find({ loc: {'$near':[lng, lat]} })
+    var query = Trash.find({ loc: {'$near':[lng, lat], $maxDistance: distance} })
                      .where('dep_content').regex(re)
                      .limit(num);
     query.exec(function(err, trashs) {
          if(!err){
-            //mongoose.connection.close();
             console.log(trashs);
             res.json(trashs);
          }else{
-            //res.send(err,callback);
             res.end('Error:' + err);
          }
     });
@@ -64,15 +63,11 @@ app.get('/:hour/:num/:lng/:lat', function (req, res) {
 });
 
 // Launch server
-//var port = process.env.PORT || 8080 ; 
-//, ip = process.env.IP || "127.0.0.1";
+//var port = process.env.PORT || 8080 
+//    , ip = process.env.IP || "127.0.0.1";
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080  
- , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-
+  , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
 app.listen(port, ip);
-
-//app.listen(OPENSHIFT_NODEJS_PORT || 8080);
-
 
