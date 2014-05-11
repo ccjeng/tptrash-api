@@ -42,7 +42,7 @@ trashSchema.virtual('location').get(function () {
     return this.loc.lat + ',' + this.loc.lng;
 });
 
-var Trash = mongoose.model('Trash', trashSchema, 'Trashs');
+var Trash = mongoose.model('Trash', trashSchema, 'Trash');
 
 
 var allowCrossDomain = function(req, res, next) {
@@ -67,7 +67,7 @@ app.get('/:hour/:num/:dist/:lng/:lat', function (req, res) {
                      .limit(num);
     query.exec(function(err, trashs) {
          if(!err){
-            console.log(trashs);
+            //console.log(trashs);
             res.json(trashs);
          }else{
             res.end('Error:' + err);
