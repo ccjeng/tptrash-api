@@ -79,11 +79,15 @@ app.get('/:hour/:num/:dist/:lng/:lat', function (req, res) {
 });
 
 // Launch server
-var port = process.env.PORT || 8080 
-    , ip = process.env.IP || "127.0.0.1";
+var port = process.env.PORT || 8080;
+//    , ip = process.env.IP || "127.0.0.1";
+
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
 
 //var port = process.env.OPENSHIFT_NODEJS_PORT || 8080  
 //  , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
-app.listen(port, ip);
+//app.listen(port, ip);
 
