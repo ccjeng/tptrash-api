@@ -22,9 +22,9 @@ var schemaOptions = {
     , id: false
 };
 var trashSchema = new mongoose.Schema({
-    title: String,  
-    dep_content: String,
-    loc: {lng:Number,lat:Number},
+    CarTime: String,  
+    Adddress: String,
+    Loc: {Lng:Number,Lat:Number},
 }, schemaOptions);
 
 trashSchema.index({
@@ -32,17 +32,18 @@ trashSchema.index({
 });
 
 /*additional conlumns*/
-trashSchema.virtual('name').get(function () {
-    return this.title.substring(6, this.title.length);
-});
-trashSchema.virtual('time').get(function () {
-    return this.dep_content.substring(this.dep_content.length-11, this.dep_content.length);
-});
+//trashSchema.virtual('name').get(function () {
+//    return this.title.substring(6, this.title.length);
+//});
+//trashSchema.virtual('time').get(function () {
+//    return this.dep_content.substring(this.dep_content.length-11, this.dep_content.length);
+//});
+
 trashSchema.virtual('location').get(function () {
-    return this.loc.lat + ',' + this.loc.lng;
+    return this.Loc.Lat + ',' + this.Loc.Lng;
 });
 
-var Trash = mongoose.model('Trash', trashSchema, 'Trash');
+var Trash = mongoose.model('trash2014', trashSchema, 'trash2014');
 
 
 var allowCrossDomain = function(req, res, next) {
@@ -62,9 +63,10 @@ app.get('/:hour/:num/:dist/:lng/:lat', function (req, res) {
     
     var search = new RegExp(hour, "i");
 
-    var query = Trash.find({ loc: {'$near':[lng, lat], $maxDistance: distance} })
-                     .where('dep_content').regex(search)
+    var query = Trash.find({ Loc: {'$near':[lng, lat], $maxDistance: distance} })
+                     .where('CarTime').regex(search)
                      .limit(num);
+
     query.exec(function(err, trashs) {
          if(!err){
             //console.log(trashs);
@@ -77,11 +79,11 @@ app.get('/:hour/:num/:dist/:lng/:lat', function (req, res) {
 });
 
 // Launch server
-//var port = process.env.PORT || 8080 
-//    , ip = process.env.IP || "127.0.0.1";
+var port = process.env.PORT || 8080 
+    , ip = process.env.IP || "127.0.0.1";
 
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080  
-  , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+//var port = process.env.OPENSHIFT_NODEJS_PORT || 8080  
+//  , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
 app.listen(port, ip);
 
